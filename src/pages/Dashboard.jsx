@@ -6,7 +6,7 @@ import {
   Gift,
   Package,
   Target,
-  Sparkles
+  Sparkles,
 } from 'lucide-react';
 
 import { useGame } from '../context/GameContext';
@@ -16,15 +16,21 @@ export default function Dashboard() {
   const { game, daily } = useGame();
 
   const owned = game.inventory.reduce(
-    (s, x) => s + x.quantity,
+    (total, item) => total + (item.quantity || 0),
     0
   );
 
   const today = new Date().toLocaleDateString('en-CA');
 
+  // Memastikan data riwayat yang ditampilkan valid
+  const recentHistory = (game.history || [])
+    .filter((item) => item && item.id)
+    .slice(0, 3);
+
   return (
     <div className="stack">
 
+      {/* HERO */}
       <section className="hero paper">
         <div>
           <small className="hand">
@@ -59,6 +65,7 @@ export default function Dashboard() {
         </div>
       </section>
 
+      {/* STATISTIK */}
       <div className="stats">
         <Stat
           icon={<Sparkles />}
@@ -85,6 +92,7 @@ export default function Dashboard() {
         />
       </div>
 
+      {/* DAILY REWARD */}
       <section className="section-title">
         <div>
           <small className="hand">
@@ -122,6 +130,7 @@ export default function Dashboard() {
         </strong>
       </div>
 
+      {/* RIWAYAT TERBARU */}
       <section className="section-title">
         <div>
           <small className="hand">
@@ -136,12 +145,12 @@ export default function Dashboard() {
         </Link>
       </section>
 
-      {game.history.length ? (
+      {recentHistory.length > 0 ? (
         <div className="items">
-          {game.history.slice(0, 3).map((x, i) => (
+          {recentHistory.map((item, index) => (
             <ItemCard
-              key={x.uid || i}
-              item={x}
+              key={`${item.id}-${item.date || index}`}
+              item={item}
             />
           ))}
         </div>

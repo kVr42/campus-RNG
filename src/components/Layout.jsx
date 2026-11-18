@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import { useGame } from '../context/GameContext';
@@ -9,10 +10,26 @@ const titles = {
     'Gacha',
     'Coba keberuntunganmu. Barang apa yang akan kamu dapatkan hari ini?',
   ],
-  '/inventory': ['Koleksi', 'Semua barang unik yang berhasil kamu temukan.'],
-  '/history': ['Riwayat', 'Catatan setiap keberuntungan yang pernah kamu dapatkan.'],
-  '/shop': ['Toko', 'Kumpulkan koin untuk kesempatan Gacha berikutnya.'],
-  '/profile': ['Profil', 'Lihat perjalanan petualangan kampusmu.'],
+  '/inventory': [
+    'Koleksi',
+    'Semua barang unik yang berhasil kamu temukan.',
+  ],
+  '/quiz': [
+    'DPW Quiz',
+    'Uji pengetahuan pengembangan web dan kumpulkan EXP.',
+  ],
+  '/history': [
+    'Riwayat',
+    'Catatan setiap keberuntungan yang pernah kamu dapatkan.',
+  ],
+  '/shop': [
+    'Toko',
+    'Kumpulkan koin untuk kesempatan Gacha berikutnya.',
+  ],
+  '/profile': [
+    'Profil',
+    'Lihat perjalanan petualangan kampusmu.',
+  ],
 };
 
 export default function Layout() {
@@ -33,7 +50,8 @@ export default function Layout() {
           </div>
 
           <div className="top-coins">
-            🪙 {game.coins.toLocaleString('id-ID')} <small>KOIN</small>
+            🪙 {game.coins.toLocaleString('id-ID')}
+            <small>KOIN</small>
           </div>
         </header>
 

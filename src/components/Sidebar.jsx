@@ -1,6 +1,8 @@
+
 import React from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
+
 import {
   House,
   Box,
@@ -9,12 +11,14 @@ import {
   ShoppingBag,
   UserRound,
   Coins,
+  GraduationCap,
 } from 'lucide-react';
 
 const links = [
   ['/', 'Dashboard', House],
   ['/gacha', 'Gacha', Box],
   ['/inventory', 'Koleksi', Package],
+  ['/quiz', 'DPW Quiz', GraduationCap],
   ['/history', 'Riwayat', BookOpen],
   ['/shop', 'Toko', ShoppingBag],
   ['/profile', 'Profil', UserRound],
@@ -39,7 +43,9 @@ export default function Sidebar({ coins }) {
             key={to}
             to={to}
             end={to === '/'}
-            className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
+            className={({ isActive }) =>
+              `nav-link ${isActive ? 'active' : ''}`
+            }
           >
             <Icon size={17} />
             {label}
@@ -55,7 +61,9 @@ export default function Sidebar({ coins }) {
         </div>
       </div>
 
-      <div className="side-note">💸Gacha sampai rungkad!</div>
+      <div className="side-note">
+        💸 Gacha sampai rungkad!
+      </div>
     </aside>
   );
 }
