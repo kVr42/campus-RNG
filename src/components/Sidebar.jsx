@@ -63,6 +63,7 @@ export default function Sidebar({ coins }) {
 
       <div className="side-note">
         💸 Gacha sampai rungkad!
+        Kerjakan quiz sampai hebat 🕶️
       </div>
     </aside>
   );
